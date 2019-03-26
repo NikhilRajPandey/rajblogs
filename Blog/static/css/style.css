@@ -1,0 +1,52 @@
+#form:focus{
+    border-color: black;
+    box-shadow:0 0 0 .2rem rgba(42, 42, 43, 0.25);
+    outline:0 ;
+}
+#form{
+    border-radius: 0;
+}
+#home-bg{
+    background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('../../static/img/home-bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 90vh;
+}
+#ManNav{
+    background-color:transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#ManNavJs{
+    background-color:rgba(66,66,66,0.6);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#Main-text{
+    font-weight: bolder; 
+    color: white; 
+    padding-top: 250px; 
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.black{
+    background-color: rgba(66, 66, 95, 0.418);
+}
+
+body{
+    font-family: Montserrat,Georgia,'Times New Roman',Times,serif;
+}
+#olderButton{
+    color: white;
+    background-color: rgba(3, 106, 190, 0.904);
+    font-weight: bolder;
+    position: absolute;
+    right: 10px;
+    bottom: 1px;
+}
+
+
+

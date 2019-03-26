@@ -1,0 +1,83 @@
+{% extends "blog/layout.html" %}
+{% block body %}
+
+<div class="container-fluid" style="max-width: 100%;" id="home-bg">
+    <div id="Main-text">Raj Blogs
+        <p style="font-weight: 100; font-size: 25px; word-spacing: 5px; letter-spacing: 1px;">A Place for a techy people. </p>
+    </div>
+</div>
+
+<div style="margin-top:65px;" id="GamingCards">
+<h1>Gaming Blogs</h1> <br>
+<div class="row container-fluid" id="GamingBlogs">
+    {% for Blog in gameBlogs %}
+    <div class="col-lg-4 mb-5">
+        <div class="card">
+            <img class="card-img-top" src="/media/{{Blog.thumnail}}">
+            <div class="card-body">
+                <h4 class="card-title" id="card-a-title">
+                    <a href="#">{{ Blog.title }}</a>
+                </h4>
+                <p class="card-text">
+                        {% autoescape off %}
+                        {{ Blog.content|truncatechars:180 }}...
+                    {% endautoescape %}
+                </p>
+                <div>
+                    <br>
+                    <a class="btn btn-outline-primary" style="position: absolute; bottom: 10px;" href="/blog/{{ Blog.category }}/{{Blog.sludge}}" role="button">
+                        Read
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+</div>
+
+
+<div style="position:relative;" class="mb-2"><a class="btn" id="olderButton" href="#" role="button">OLDER&rarr;</a></div>
+</div>
+
+<!-- Programming Blogs -->
+
+<div style="margin-top:65px;" id="GamingCards">
+    <h1>Programming Blogs</h1> <br>
+    <div class="row container-fluid">
+        {% for Blog in ProgBlogs %}
+        <div class="col-lg-6 mb-5">
+            <div class="card">
+                <img class="card-img-top" style="border-bottom:black 1px solid;" src="/media/{{Blog.thumnail}}">
+                <div class="card-body">
+                    <h4 class="card-title" id="card-a-title">
+                        <a href="#">{{ Blog.title }}</a>
+                    </h4>
+                    <p class="card-text">
+                            {% autoescape off %}
+                            {{ Blog.content|truncatechars:180 }}...
+                        {% endautoescape %}
+                    </p>
+                    <div>
+                        <br>
+                        <a class="btn btn-outline-success" style="position: absolute; bottom: 10px;" href="/blog/{{ Blog.category }}/{{Blog.sludge}}" role="button">
+                            Read
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+    </div>
+<div style="position:relative;" class="mb-2"><a class="btn" id="olderButton" href="#" role="button">OLDER&rarr;</a></div>
+<style>
+h4 a{
+    color: #000811;
+    text-decoration: none;
+}
+.card{
+    height: 100%;
+}
+</style>
+
+{% endblock %}
