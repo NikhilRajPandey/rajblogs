@@ -10,7 +10,7 @@ def pagination(data,page,no_of_post_one_page):
     how_many_page = ceil(len(data)/no_of_post_one_page)
 
     Blogdata = []
-    for i in data:
+    for i in range(len(data)):
         currentData = data[i]
         Blogdata.append(currentData)
 
@@ -31,13 +31,13 @@ def about(request):
 def contact(request):
     return render(request,'blog/contact.html')
 
-def blog(request,blog_category):
+def blog(request,blog_category,page):
     Mycategories = ["games","programming"]
     if blog_category in Mycategories:
         posts = AllBlogs.objects.filter(category=blog_category)
 
-        print(pagination(posts,1,5))
-        return render(request,'blog/post.html')
+        params = pagination(posts,page,5)
+        return render(request,'blog/post.html',params)
     else:
         return redirect("index")
 
