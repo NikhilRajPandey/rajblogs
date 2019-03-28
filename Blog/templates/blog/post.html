@@ -1,6 +1,22 @@
 {% extends "blog/layout.html" %}
 {% block body %}
-
-
-
+<br>
+{% for Blog in Blogs %}
+<div class="row container mt-5">
+    <img src="/media/{{ Blog.thumnail }}" class="img-fluid col-lg-5">
+    <div class="col-lg-7">
+        <h4>{{ Blog.title }}</h4>
+        <span style="color:#6c757d;">Posted on {{ Blog.date }}</span>
+        <p>
+                {% autoescape off %}
+                {{ Blog.content|truncatechars:180 }}..
+            {% endautoescape %}
+        </p>
+        <button class="btn btn-outline-primary">Read</button>
+    </div>
+</div>
+<div class="container">
+    <hr>
+</div>
+{% endfor %}
 {% endblock %}

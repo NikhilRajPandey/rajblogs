@@ -34,9 +34,11 @@ def contact(request):
 def blog(request,blog_category,page):
     Mycategories = ["games","programming"]
     if blog_category in Mycategories:
-        posts = AllBlogs.objects.filter(category=blog_category)
+        posts = AllBlogs.objects.filter(category=blog_category).order_by('id')[::-1]
 
         params = pagination(posts,page,5)
+        params['index'] = 'False'
+        params['scrollData'] = '0'
         return render(request,'blog/post.html',params)
     else:
         return redirect("index")
