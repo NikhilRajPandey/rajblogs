@@ -2,8 +2,8 @@ from django.db import models
 
 class AllBlogs(models.Model):
     id = models.AutoField(primary_key=True)
-    sludge = models.CharField(max_length=40)
-    title = models.CharField(max_length=70)
+    sludge = models.CharField(max_length=120)
+    title = models.CharField(max_length=120)
     thumnail = models.FileField(upload_to="blog/",default="")
     category = models.CharField(max_length=25)
     content = models.TextField()

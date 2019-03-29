@@ -1,0 +1,15 @@
+{% extends "blog/layout.html" %}
+{% block body %}
+
+<br>
+<div class="container mt-5">
+    <h1>{{post.title}}</h1>
+    <span id="GreyFont">Posted on {{ post.date }}</span>
+    <p>
+        {% autoescape off %}
+        {{ post.content }}
+    {% endautoescape %}
+</p>
+<br>
+</div>
+{% endblock %}

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from Blog.models import AllBlogs
 from math import ceil
 
+Mycategories = ["games","programming"]
+
 def pagination(data,page,no_of_post_one_page):
     page = int(page)
     no_of_post_one_page = int(no_of_post_one_page)
@@ -32,7 +34,6 @@ def contact(request):
     return render(request,'blog/contact.html')
 
 def blog(request,blog_category,page):
-    Mycategories = ["games","programming"]
     if blog_category in Mycategories:
         posts = AllBlogs.objects.filter(category=blog_category).order_by('id')[::-1]
 
@@ -43,6 +44,11 @@ def blog(request,blog_category,page):
     else:
         return redirect("index")
 
-def blog_post(request,blog_title):
-    return render(request,'blog/post.html')
+def blog_post(request,blog_title,blog_category):
+    if blog_category in Mycategories:
+        post = AllBlogs.objects.filter(sludge=blog_title).first()
+        print(post)
+        params = {"post":post}
+        return render(request,'blog/blogpost.html',params)
+    return redirect('index')
 
