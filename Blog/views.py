@@ -44,9 +44,9 @@ def blog(request,blog_category,page):
     else:
         return redirect("index")
 
-def blog_post(request,blog_title,blog_category):
+def blog_post(request,blog_id,blog_category):
     if blog_category in Mycategories:
-        post = AllBlogs.objects.filter(sludge=blog_title).first()
+        post = AllBlogs.objects.filter(id=blog_id).first()
         print(post)
         params = {"post":post}
         return render(request,'blog/blogpost.html',params)
