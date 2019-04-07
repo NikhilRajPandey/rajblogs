@@ -1,3 +1,5 @@
+# UserName - master
+# Password - Redh@#44k
 from django.shortcuts import render, redirect
 from Blog.models import AllBlogs
 from math import ceil
@@ -5,18 +7,25 @@ from math import ceil
 Mycategories = ["games","programming"]
 
 def pagination(data,page,no_of_post_one_page):
+    # Variables Declaring
     page = int(page)
     no_of_post_one_page = int(no_of_post_one_page)
     start_point = (page-1)*no_of_post_one_page
     endpoint = start_point+no_of_post_one_page
     how_many_page = ceil(len(data)/no_of_post_one_page)
-
+    
     Blogdata = []
-    for i in range(len(data)):
-        currentData = data[i]
-        Blogdata.append(currentData)
+    
+
+    i = 0
+    while i <= len(data):
+        if i < endpoint:
+            currentData = data[i]
+            Blogdata.append(currentData)
+        i = i + 1
 
     paramsdata = {start_point:endpoint,"Blogs":Blogdata,"ceil":how_many_page}
+
     return paramsdata
 
 def index(request):
