@@ -12,18 +12,22 @@ def pagination(data,page,no_of_post_one_page):
     no_of_post_one_page = int(no_of_post_one_page)
     start_point = (page-1)*no_of_post_one_page
     endpoint = start_point+no_of_post_one_page
-    how_many_page = ceil(len(data)/no_of_post_one_page)
-    
+    how_many_page = ceil(len(data)/no_of_post_one_page) 
     Blogdata = []
-    
-
     i = 0
+
+    # In the Case When the endpoint is 10 and data is 7
+    if len(data) <= endpoint:
+        endpoint = len(data) 
+
+    # Main Funtion Here
     while i <= len(data):
-        if i < endpoint:
+        if i < endpoint and i >= start_point:
             currentData = data[i]
             Blogdata.append(currentData)
         i = i + 1
 
+    # Returning Data
     paramsdata = {start_point:endpoint,"Blogs":Blogdata,"ceil":how_many_page}
 
     return paramsdata
@@ -60,4 +64,3 @@ def blog_post(request,blog_id,blog_category):
         params = {"post":post}
         return render(request,'blog/blogpost.html',params)
     return redirect('index')
-
